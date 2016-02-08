@@ -1,6 +1,9 @@
 package game.view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class UserInputPanel extends JPanel
@@ -9,6 +12,9 @@ public class UserInputPanel extends JPanel
 		
 		private JButton grabUserInput;
 		private JTextField userInputField;
+		
+		private int userGuess;
+		private int theEnteredNumber;
 		
 		public UserInputPanel()
 			{
@@ -48,6 +54,18 @@ public class UserInputPanel extends JPanel
 			
 			private void buildListeners()
 			{
-				
+				grabUserInput.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent clicked)
+						{
+							parseUserInput();
+							System.out.println(userGuess);
+						}
+					});
+			}
+			
+			private void parseUserInput()
+			{
+				userGuess = Integer.parseInt(userInputField.getText());
 			}
 	}
