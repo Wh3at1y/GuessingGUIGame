@@ -4,17 +4,19 @@ import javax.swing.*;
 
 public class GamePanel extends JPanel
 	{
-		private SpringLayout baseLayout;
 		private UserGuessesPanel showUserGuesses;
 		private UserInputPanel userInputPanel;
 		private DifficultyPanel difficultySelection;
+	
+		private SpringLayout baseLayout;
 		
 		public GamePanel()
 		{
-			baseLayout = new SpringLayout();
 			showUserGuesses = new UserGuessesPanel();
 			userInputPanel = new UserInputPanel();
 			difficultySelection = new DifficultyPanel();
+			
+			baseLayout = new SpringLayout();
 			
 			buildPanel();
 			buildWindow();

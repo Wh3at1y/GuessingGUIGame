@@ -6,18 +6,28 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import game.model.EasyDifficulty;
+import game.model.NormalDifficulty;
+
 public class UserInputPanel extends JPanel
 	{
+		private DifficultyPanel grabDifficulty;
+		private EasyDifficulty easyNumber;
+		private NormalDifficulty normalNumber;
+		
 		private SpringLayout baseLayout;
 		
 		private JButton grabUserInput;
 		private JTextField userInputField;
 		
 		private int userGuess;
-		private int theEnteredNumber;
 		
 		public UserInputPanel()
 			{
+				grabDifficulty = new DifficultyPanel();
+				easyNumber = new EasyDifficulty();
+				normalNumber = new NormalDifficulty();
+				
 				baseLayout = new SpringLayout();
 				
 				grabUserInput = new JButton("Enter Guess");
@@ -59,7 +69,8 @@ public class UserInputPanel extends JPanel
 						public void actionPerformed(ActionEvent clicked)
 						{
 							parseUserInput();
-							System.out.println(userGuess);
+							
+							findDifficulty();
 						}
 					});
 			}
@@ -67,5 +78,27 @@ public class UserInputPanel extends JPanel
 			private void parseUserInput()
 			{
 				userGuess = Integer.parseInt(userInputField.getText());
+			}
+			
+			private void findDifficulty()
+			{
+				if(grabDifficulty.isEasy() == true)
+					easyIsSelected();
+				else if(grabDifficulty.isNormal() == true)
+					normalIsSelected();
+			}
+			
+			private void easyIsSelected()
+			{
+				System.out.println(easyNumber.getEasyNumber());
+				if(userGuess == easyNumber.getEasyNumber())
+					System.out.println("Correct");
+				else
+					System.out.println("False");
+			}
+			
+			private void normalIsSelected()
+			{
+				System.out.println(normalNumber.getNormalNumber());
 			}
 	}

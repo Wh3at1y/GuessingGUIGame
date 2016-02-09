@@ -1,6 +1,7 @@
 package game.view;
 
 import game.model.EasyDifficulty;
+import game.model.NormalDifficulty;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,16 +11,20 @@ import javax.swing.*;
 
 public class DifficultyPanel extends JPanel
 	{
-		private EasyDifficulty easyNumberGen;
 		private SpringLayout baseLayout;
 		
 		private JButton easyButton;
+		private JButton normalButton;
+		
+		private boolean isEasy;
+		private boolean isNormal;
 		
 		public DifficultyPanel()
 			{	
 				baseLayout = new SpringLayout();
 				
 				easyButton = new JButton("Easy");
+				normalButton = new JButton("Normal");
 				
 				buildPanel();
 				buildWindow();
@@ -33,6 +38,7 @@ public class DifficultyPanel extends JPanel
 				setPreferredSize(new Dimension(180,478));
 				
 				add(easyButton);
+				add(normalButton);
 			}
 			
 			private void buildWindow()
@@ -46,9 +52,37 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent click)
 						{
-							easyNumberGen = new EasyDifficulty();
+							EasyDifficulty easyNumberGen = new EasyDifficulty();
 							System.out.println(easyNumberGen.getEasyNumber());
+							
+							isEasy = true;
+							isNormal = false;
 						}
 					});
+				
+				normalButton.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent click)
+					{
+						NormalDifficulty normalNumberGen = new NormalDifficulty();
+						System.out.println(normalNumberGen.getNormalNumber());
+						
+						isEasy = false;
+						isNormal = true;
+					}
+				});
 			}
+
+			public boolean isEasy()
+			{
+				return true;
+			}
+
+			public boolean isNormal()
+			{
+				return true;
+			}
+			
+			
+
 	}
