@@ -24,7 +24,7 @@ public class UserInputPanel extends JPanel
 		
 		public UserInputPanel()
 			{
-				grabDifficulty = new DifficultyPanel();
+				
 				easyNumber = new EasyDifficulty();
 				normalNumber = new NormalDifficulty();
 				
@@ -68,7 +68,7 @@ public class UserInputPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							parseUserInput();
+							//parseUserInput();
 							
 							findDifficulty();
 						}
@@ -81,11 +81,12 @@ public class UserInputPanel extends JPanel
 			}
 			
 			private void findDifficulty()
-			{
-				if(grabDifficulty.isEasy() == true)
-					easyIsSelected();
-				else if(grabDifficulty.isNormal() == true)
-					normalIsSelected();
+			{grabDifficulty = new DifficultyPanel();
+				boolean ok= grabDifficulty.isEasy();
+				if(ok)
+					System.out.println("ok");
+				else
+					System.out.println("no");
 			}
 			
 			private void easyIsSelected()

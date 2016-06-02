@@ -52,10 +52,10 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent click)
 						{
-							EasyDifficulty easyNumberGen = new EasyDifficulty();
-							System.out.println(easyNumberGen.getEasyNumber());
-							
+							System.out.println("this working");
 							isEasy = true;
+							if(isEasy == true)
+								System.out.println("OKOK");
 							isNormal = false;
 						}
 					});
@@ -67,22 +67,14 @@ public class DifficultyPanel extends JPanel
 						NormalDifficulty normalNumberGen = new NormalDifficulty();
 						System.out.println(normalNumberGen.getNormalNumber());
 						
-						isEasy = false;
+						//isEasy = false;
 						isNormal = true;
 					}
 				});
 			}
-
+			
 			public boolean isEasy()
 			{
-				return true;
+				return isEasy;
 			}
-
-			public boolean isNormal()
-			{
-				return true;
-			}
-			
-			
-
 	}
